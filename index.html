@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Creation</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            font-weight: bold;
+            background: linear-gradient(to right, red, yellow, green);
+            cursor: pointer;
+        }
+
+        p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Account Creation</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="validate()">Sign Up</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+function validate() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let message = document.getElementById("message");
+
+    if (username.length < 7) {
+        message.innerHTML = "Username must be at least 7 characters.";
+        return;
+    }
+
+    if (password.length < 10) {
+        message.innerHTML = "Password must be at least 10 characters.";
+        return;
+    }
+
+    if (!/[A-Za-z]/.test(password)) {
+        message.innerHTML = "Password must contain at least one letter.";
+        return;
+    }
+
+    if (!/[0-9]/.test(password)) {
+        message.innerHTML = "Password must contain at least one number.";
+        return;
+    }
+
+    message.innerHTML = "Account created successfully!";
+}
+</script>
+
+</body>
+</html>
+
